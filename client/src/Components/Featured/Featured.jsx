@@ -12,17 +12,11 @@ const Featured = () => {
     Aos.init({ duration: 2000 });
   }, []);
 
-  const { data, loading, error } = useFetch("/hotels/countByCity", [
-    "berlin",
-    "madrid",
-    "london",
-  ]);
-
-  console.log(data);
+  const { data, loading, error } = useFetch();
 
   return (
     <div className="featured">
-      {loading ? (
+      {!data ? (
         "Loading please wait"
       ) : (
         <>
@@ -35,7 +29,7 @@ const Featured = () => {
             />
             <div className="featuredTitles" data-aos="fade-up">
               <h1>Berlin</h1>
-              <h2>{data[0]} properties</h2>
+              <h2>102 properties</h2>
             </div>
           </div>
 
@@ -48,7 +42,7 @@ const Featured = () => {
             />
             <div className="featuredTitles" data-aos="fade-up">
               <h1>Madrid</h1>
-              <h2>{data[1]} properties</h2>
+              <h2>506 properties</h2>
             </div>
           </div>
           <div className="featuredItem">
@@ -60,7 +54,7 @@ const Featured = () => {
             />
             <div className="featuredTitles" data-aos="fade-up">
               <h1>London</h1>
-              <h2>{data[3]} properties</h2>
+              <h2>305 properties</h2>
             </div>
           </div>
         </>
